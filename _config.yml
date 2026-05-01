@@ -7,9 +7,9 @@ url: "https://yourusername.github.io"
 baseurl: ""
 
 # Social Links
-linkedin: "https://linkedin.com/in/yourprofile"
-github: "https://github.com/yourusername"
-orcid: "https://orcid.org/0000-0000-0000-0000"
+linkedin: "https://www.linkedin.com/in/nicholas-wainwright2/"
+github: "https://github.com/nick-wainwright"
+#orcid: "https://orcid.org/0000-0000-0000-0000"
 
 # Build Settings
 markdown: kramdown
