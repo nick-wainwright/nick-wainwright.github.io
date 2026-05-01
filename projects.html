@@ -1,0 +1,84 @@
+---
+layout: default
+title: "Projects"
+permalink: /projects/
+---
+
+<section class="hero" style="padding: 3rem 0 2.5rem;">
+  <div class="container">
+    <h1>Projects</h1>
+    <p class="hero-description">Case studies and technical implementations in IT governance, compliance automation, and secure architecture.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+    {% if sorted_projects.size > 0 %}
+      <div class="projects-grid">
+        {% for project in sorted_projects %}
+          <a href="{{ project.url | relative_url }}" class="project-card">
+            <div class="project-card-body">
+              {% if project.tags %}
+                <div class="project-card-tags">
+                  {% for tag in project.tags %}
+                    <span class="tech-tag">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+            </div>
+            <div class="project-card-footer">
+              <span class="project-link">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+              {% if project.date %}
+                <span class="label-caps">{{ project.date | date: "%Y" }}</span>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <!-- Sample projects while you populate your collection -->
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-card-body">
+            <div class="project-card-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">CMDB</span>
+              <span class="tech-tag">Compliance</span>
+            </div>
+            <h3>Asset Compliance Automation Engine</h3>
+            <p>Automated asset discovery and CMDB reconciliation system that reduced audit cycle time by 40% and eliminated manual tracking across 3,000+ devices.</p>
+          </div>
+          <div class="project-card-footer">
+            <span class="project-link">Add to <code>_projects/</code></span>
+            <span class="label-caps">2024</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-body">
+            <div class="project-card-tags">
+              <span class="tech-tag">Zero Trust</span>
+              <span class="tech-tag">Network Security</span>
+            </div>
+            <h3>Zero-Trust Network Segmentation</h3>
+            <p>Designed and implemented a zero-trust architecture for a legacy financial environment, achieving full micro-segmentation without operational downtime.</p>
+          </div>
+          <div class="project-card-footer">
+            <span class="project-link">Add to <code>_projects/</code></span>
+            <span class="label-caps">2024</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem; color: var(--on-surface-variant); font-size: 0.9375rem;">
+        Add your real projects by creating Markdown files in <code>_projects/</code>.
+      </p>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,53 @@
+# Site Settings
+title: "Technical Portfolio"
+description: "Governance, Computer Science & Cybersecurity — Bridging technical implementation and strategic governance."
+author: "Your Name"
+email: "your@email.com"
+url: "https://yourusername.github.io"
+baseurl: ""
+
+# Social Links
+linkedin: "https://linkedin.com/in/yourprofile"
+github: "https://github.com/yourusername"
+orcid: "https://orcid.org/0000-0000-0000-0000"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:slug/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md

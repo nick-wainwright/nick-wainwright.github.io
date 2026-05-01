@@ -1,0 +1,81 @@
+---
+layout: default
+title: "Contact"
+permalink: /contact/
+---
+
+<section class="hero" style="padding: 3rem 0 2.5rem;">
+  <div class="container">
+    <h1>Contact</h1>
+    <p class="hero-description">Interested in discussing a project, collaboration, or consulting engagement? Get in touch.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 600px;">
+
+    <!-- Formspree contact form — replace YOUR_FORM_ID -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" class="form-input" required placeholder="Your full name" />
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-input" required placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="subject" class="form-label">Subject</label>
+        <select id="subject" name="subject" class="form-input">
+          <option value="">Select a topic</option>
+          <option value="consulting">Consulting Engagement</option>
+          <option value="collaboration">Research Collaboration</option>
+          <option value="speaking">Speaking Opportunity</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" name="message" class="form-input form-textarea" required rows="6" placeholder="Tell me about your project or question..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+    </form>
+
+    <p style="margin-top: 2rem; color: var(--on-surface-variant); font-size: 0.875rem; text-align: center;">
+      Or reach me directly via
+      {% if site.linkedin %}<a href="{{ site.linkedin }}" target="_blank">LinkedIn</a>{% endif %}
+      or
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+    </p>
+
+  </div>
+</section>
+
+<style>
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-label {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+.form-input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--on-surface);
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.875rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  width: 100%;
+  appearance: none;
+}
+.form-input:focus {
+  border-color: var(--accent-technical);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.12);
+}
+.form-textarea { resize: vertical; min-height: 150px; }
+</style>

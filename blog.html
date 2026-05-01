@@ -1,0 +1,87 @@
+---
+layout: default
+title: "Insights"
+permalink: /blog/
+---
+
+<section class="hero" style="padding: 3rem 0 2.5rem;">
+  <div class="container">
+    <h1>Insights</h1>
+    <p class="hero-description">White papers, case studies, and technical notes on governance, cybersecurity, and compliance.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    {% if site.posts.size > 0 %}
+      <!-- Filter tabs (progressive enhancement via JS) -->
+      <div class="filter-tabs" style="display:flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;" id="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="white-paper">White Papers</button>
+        <button class="filter-btn" data-filter="case-study">Case Studies</button>
+        <button class="filter-btn" data-filter="blog-post">Blog Posts</button>
+      </div>
+
+      <div class="insights-list" id="posts-list">
+        {% for post in site.posts %}
+          <a href="{{ post.url | relative_url }}"
+             class="insight-item"
+             data-type="{{ post.post_type | downcase | replace: ' ', '-' }}">
+            <div class="insight-meta">
+              {% if post.post_type %}
+                <span class="post-type-badge badge--{{ post.post_type | downcase | replace: ' ', '-' }}">{{ post.post_type }}</span>
+              {% endif %}
+              <span class="insight-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+            </div>
+            <div class="insight-title">{{ post.title }}</div>
+            {% if post.excerpt %}
+              <p class="insight-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <p style="color: var(--on-surface-variant); font-style: italic;">
+        Posts coming soon. Add Markdown files to the <code>_posts/</code> directory.
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.filter-btn {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+</style>
+
+<script>
+const tabs = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('.insight-item[data-type]');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    items.forEach(item => {
+      item.style.display = (filter === 'all' || item.dataset.type === filter) ? '' : 'none';
+    });
+  });
+});
+</script>

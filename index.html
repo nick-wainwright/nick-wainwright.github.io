@@ -1,0 +1,159 @@
+---
+layout: default
+title: "Governance, Computer Science & Cybersecurity"
+---
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="container">
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      Available for Consulting
+    </div>
+    <h1>Governance, Computer Science &amp; Cybersecurity</h1>
+    <p class="hero-description">
+      Leveraging 5+ years of experience bridging the gap between technical
+      implementation and strategic governance. Specializing in secure IT
+      architectures, compliance frameworks, and resilient systems.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ '/projects' | relative_url }}" class="btn btn-primary">View Case Studies</a>
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">Read Insights</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ KEY EXPERTISE ═══════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Key Expertise</h2>
+    </div>
+
+    <!-- Primary card -->
+    <div class="expertise-grid expertise-grid--primary" style="margin-bottom: 1rem;">
+      <div class="expertise-card">
+        <div class="expertise-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Strategic IT Governance</h3>
+        <p>Developing and implementing comprehensive IT governance frameworks aligned with organizational objectives. Ensuring regulatory compliance, risk mitigation, and optimal resource utilization across enterprise architectures.</p>
+        <div class="expertise-tags">
+          <span class="expertise-tag">COBIT &amp; ITIL Frameworks</span>
+          <span class="expertise-tag">Risk Assessment &amp; Mitigation Planning</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary cards -->
+    <div class="expertise-grid expertise-grid--secondary">
+      <div class="expertise-card">
+        <div class="expertise-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Secure IT Infrastructure</h3>
+        <p>Architecting resilient systems with security by design. Implementation of zero-trust architectures and continuous monitoring solutions.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon" style="background: rgba(198, 149, 94, 0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c6955e" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <h3>Inventory &amp; Asset Compliance</h3>
+        <p>Lifecycle management of technical assets ensuring strict adherence to software licensing, hardware tracking, and data retention policies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CODE SHOWCASE ═══════ -->
+<section class="section--sm">
+  <div class="container">
+    <div class="code-showcase">
+      <div class="code-showcase-header">
+        <span class="code-showcase-title">Compliance Automation</span>
+        <span class="code-badge">Python</span>
+      </div>
+      <div class="code-showcase-desc">
+        Automated script for verifying asset tag compliance against the central configuration management database (CMDB).
+      </div>
+      <pre><code class="language-python">def verify_asset_compliance(cmdb_records, physical_inventory):
+    """
+    Validates physical inventory against CMDB.
+    Returns list of discrepancies for audit review.
+    """
+    discrepancies = []
+    for asset in physical_inventory:
+        if asset.tag not in cmdb_records:
+            discrepancies.append({
+                'tag': asset.tag,
+                'status': 'UNREGISTERED_ASSET',
+                'severity': 'HIGH'
+            })
+    return discrepancies</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ RECENT INSIGHTS ═══════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Recent Insights</h2>
+    </div>
+
+    {% assign recent_posts = site.posts | limit: 4 %}
+    {% if recent_posts.size > 0 %}
+      <div class="insights-list">
+        {% for post in recent_posts %}
+          <a href="{{ post.url | relative_url }}" class="insight-item">
+            <div class="insight-meta">
+              {% if post.post_type %}
+                <span class="post-type-badge badge--{{ post.post_type | downcase | replace: ' ', '-' }}">{{ post.post_type }}</span>
+              {% endif %}
+              <span class="insight-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+            </div>
+            <div class="insight-title">{{ post.title }}</div>
+            {% if post.excerpt %}
+              <p class="insight-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- Placeholder content when no posts exist yet -->
+      <div class="insights-list">
+        <div class="insight-item">
+          <div class="insight-meta">
+            <span class="post-type-badge badge--white-paper">White Paper</span>
+            <span class="insight-date">Oct 24, 2024</span>
+          </div>
+          <div class="insight-title">Zero-Trust Architecture in Legacy Environments</div>
+          <p class="insight-excerpt">A pragmatic approach to migrating legacy institutional systems to a zero-trust model without disrupting critical operational workflows.</p>
+        </div>
+        <div class="insight-item">
+          <div class="insight-meta">
+            <span class="post-type-badge badge--case-study">Case Study</span>
+            <span class="insight-date">Sep 12, 2024</span>
+          </div>
+          <div class="insight-title">Streamlining Software License Compliance</div>
+          <p class="insight-excerpt">How automated asset discovery reduced compliance audit times by 40% while mitigating licensing risk.</p>
+        </div>
+      </div>
+    {% endif %}
+
+    <div style="margin-top: 2rem;">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">View All Insights →</a>
+    </div>
+  </div>
+</section>
